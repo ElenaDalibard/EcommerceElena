@@ -1,0 +1,68 @@
+﻿@model IEnumerable<EcommerceElena.Models.Commande>
+
+@{
+    ViewBag.Title = "Commandes";
+}
+
+
+
+<h2>Toutes les commandes</h2>
+
+<p>@Html.ActionLink("Trier les commandes en cours selon le statut", "ListFiltre")</p>
+<p>@Html.ActionLink("Regarder les commandes suspendues", "ListInactive")</p>
+
+
+<table class="table">
+    <tr>
+        <th>
+            № de la commande
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.nomUser)
+        </th>
+        <th>
+            Date et l'heure de la Commande
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PrixTotal)
+        </th>
+        <th>
+            Statut
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr id="@(item.IdCommande)sup">
+            <td>
+                @Html.DisplayFor(modelitem => item.IdCommande)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.nomUser)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dateCommande)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrixTotal)
+            </td>
+            <td id="@(item.IdCommande)etat">
+                @(((EcommerceElena.Outils.StatusCommande)item.statusCommande).ToString())
+            </td>
+
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.IdCommande }) |
+                @Ajax.ActionLink("Traiter", "Traiter", new { id = item.IdCommande }, new AjaxOptions { Confirm = "Voulez-vous vraiment avancer la commande?", HttpMethod = "GET", InsertionMode = InsertionMode.Replace, UpdateTargetId = item.IdCommande + "etat" }) |
+
+                @if (item.statusCommande != 0)
+                {
+                    <span>@Ajax.ActionLink("Desactiver", "Inactiver", new { id = item.IdCommande }, new AjaxOptions { Confirm = "Voulez-vous vraiment desactiver la commande?", HttpMethod = "GET", InsertionMode = InsertionMode.Replace, UpdateTargetId = item.IdCommande + "etat" }) |</span>
+                }
+                @Ajax.ActionLink("Supprimer", "Supprimer", new { id = item.IdCommande }, new AjaxOptions { Confirm = "Voulez-vous vraiment supprimer la commande?", HttpMethod = "GET", InsertionMode = InsertionMode.Replace, UpdateTargetId = item.IdCommande + "sup" })
+            </td>
+        </tr>
+    }
+
+</table>

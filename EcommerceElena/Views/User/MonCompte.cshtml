@@ -1,0 +1,84 @@
+﻿@model EcommerceElena.Models.User
+
+@{
+    ViewBag.Title = "Profil";
+}
+    <style>
+        .title {
+            font-family: 'Ink Free';
+            font-size: 40px;
+        }
+    </style>
+
+    <h2 class="title">Mon Profil</h2>
+
+<div>
+    <h4>@Model.PrenomUser @Model.nomUser</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.sexe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sexe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.emailUser)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.emailUser)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.telephoneUser)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.telephoneUser)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.paysUser)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.paysUser)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.villeUser)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.villeUser)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.adresseUser)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.adresseUser)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.codePostal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.codePostal)
+        </dd>
+    </dl>
+</div>
+
+<p>
+    @Html.ActionLink("Modifier le profil", "Edit", new { id = Model.idUser }) |
+    @Html.ActionLink("Changer de mot de passe", "Index", "Manage") |
+    @Html.ActionLink("Supprimer le profil", "Delete", new { id = Model.idUser }) |
+    @Html.ActionLink("Retourner à la Galerie", "Gallery", "Produit")
+
+</p>
+

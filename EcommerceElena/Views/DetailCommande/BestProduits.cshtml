@@ -1,0 +1,48 @@
+﻿@model IEnumerable<EcommerceElena.Models.DetailCommande>
+
+@{
+    ViewBag.Title = "BestProduits";
+}
+
+<h2>BestProduits</h2>
+
+<table class="table">
+    <tr>
+        <th>
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nomProd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PrixProd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Category.nomCategory)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fournisseur.nomFourn)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        <image src="@Url.Content("~/Images/" + item.idProd + "_" + item.imageUrl)" height="30" )"></image>
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.nomProd)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PrixProd)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Category.nomCategory)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Fournisseur.nomFourn)
+    </td>
+
+</tr>
+}
+
+</table>

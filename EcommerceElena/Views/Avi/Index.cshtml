@@ -1,0 +1,91 @@
+﻿@model IEnumerable<EcommerceElena.Models.Avi>
+
+@{
+    ViewBag.Title = "Avis";
+}
+
+<style>
+    .centre {text-align:center}
+</style>
+
+<h2>Liste des avis</h2>
+
+<body>
+    <br/>
+    <br/>
+    <p>
+        @Html.ActionLink("Afficher tout les avis", "Index") |
+        @Html.ActionLink("Afficher les avis nonapprouvés", "AvisNonAppr") |
+        @Html.ActionLink("Afficher les avis refusés", "AvisRefuse")
+    </p>
+
+    <table class="table">
+        <tr>
+            <th></th>
+            <th>
+                Produit
+            </th>
+            <th class="centre">
+                @Html.DisplayNameFor(model => model.User.nomUser)
+            </th>
+            <th class="centre">
+                @Html.DisplayNameFor(model => model.dateAvis)
+            </th>
+            <th class="centre">
+                Note
+            </th>
+            <th class="centre">
+                @Html.DisplayNameFor(model => model.texte)
+            </th>
+            <th class="centre">
+                Statut
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+    <tr id="@(item.idAvis)sup">
+        <td>
+            <image src="@Url.Content("~/Images/" + item.idProd + "_" + item.Produit.imageUrl)" height="30" )"></image>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Produit.nomProd)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.nomUser)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dateAvis)
+        </td>
+        <td class="centre">
+            @Html.DisplayFor(modelItem => item.note)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.texte)
+        </td>
+        <td id="@(item.idAvis)etat" class="centre">
+            @(((EcommerceElena.Outils.StatusAvis)item.statusAvis).ToString())
+        </td>
+        <td>
+            @if (item.statusAvis != 2)
+            {
+                <span>
+                    @Ajax.ActionLink("Approuver", "Approuver", new { id = item.idAvis }, new AjaxOptions { Confirm = "Voulez-vous vraiment approuver cet avis?", HttpMethod = "GET", InsertionMode = InsertionMode.Replace, UpdateTargetId = item.idAvis + "etat" }) |
+                </span>
+            }
+            @if (item.statusAvis != 0)
+            {
+                <span>
+                    @Ajax.ActionLink("Refuser", "Refuser", new { id = item.idAvis }, new AjaxOptions { Confirm = "Voulez-vous vraiment refuser cet avis?", HttpMethod = "GET", InsertionMode = InsertionMode.Replace, UpdateTargetId = item.idAvis + "etat" }) |
+                </span>
+            }
+        <span>
+            @Ajax.ActionLink("Supprimer", "Delete", new { id = item.idAvis }, new AjaxOptions { Confirm = "Voulez-vous vraiment supprimer cet avis?", HttpMethod = "GET", InsertionMode = InsertionMode.Replace, UpdateTargetId = item.idAvis + "sup" }) |
+        </span>
+        </td>
+    </tr>
+        }
+
+    </table>
+</body>

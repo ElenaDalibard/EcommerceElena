@@ -1,0 +1,62 @@
+﻿@model IEnumerable<EcommerceElena.Models.Commande>
+
+@{
+    ViewBag.Title = "Commandes";
+}
+<style>
+    .title {
+        font-family:'Ink Free';
+        font-size: 40px;
+    }
+</style>
+
+<h2>Mes commandes</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            № de la commande
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.nomUser)
+        </th>
+        <th>
+            Date et l'heure de la Commande
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PrixTotal)
+        </th>
+        <th>
+            Statut
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelitem => item.IdCommande)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.nomUser)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dateCommande)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrixTotal)
+            </td>
+            <td id="@(item.IdCommande)etat">
+                @(((EcommerceElena.Outils.StatusCommande)item.statusCommande).ToString())
+            </td>
+
+            <td>
+                @Html.ActionLink("Details", "DetailsCmd", new { id = item.IdCommande })
+            </td>
+        </tr>
+    }
+    <input type="button" class="btn-info btn-lg" value="Retour à la Galerie" onclick="location.href='@Url.Action("Gallery", "Produit")'" />
+
+</table>

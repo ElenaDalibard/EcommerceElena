@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="EcommerceElena.Models.Avi">
+    <Position X="4.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQADQAAAAAAAAAgAAAAAAAAAAEAABAAQAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Avi.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Produit" />
+      <Property Name="User" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="EcommerceElena.Models.Commande">
+    <Position X="4" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAABAACAAAAAAAgACAAIAAAAAAAAAAAAAAAAEAAQAAA=</HashCode>
+      <FileName>Models\Commande.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="User" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="EcommerceElena.Models.DetailCommande">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIACAAAAAAAAAAAAAAAAAAAAAAAAAAgQAAAAQAAAIAA=</HashCode>
+      <FileName>Models\DetailCommande.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Commande" />
+      <Property Name="Produit" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="EcommerceElena.Models.Facture">
+    <Position X="7" Y="3.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAQBEAAIAAAAAAAACAAAAAAAAQAAAAAAAAAAIAA=</HashCode>
+      <FileName>Models\Facture.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Commande" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="EcommerceElena.Models.Fournisseur">
+    <Position X="13.5" Y="3.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAEBAIAAAAAAAAAQAAIIAAAAAAAAAAEACQ=</HashCode>
+      <FileName>Models\Fournisseur.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EcommerceElena.Models.Produit">
+    <Position X="10.25" Y="1" Width="2" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAgABgAAAAYgAAAAAAAAABAABAGQAAAIAAASAQA=</HashCode>
+      <FileName>Models\Produit.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Fournisseur" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="EcommerceElena.Models.Role">
+    <Position X="2" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Role.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EcommerceElena.Models.User">
+    <Position X="1.25" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAACAAMIAABAAAAAAAAAAACBAAAACAAAABBYAA=</HashCode>
+      <FileName>Models\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

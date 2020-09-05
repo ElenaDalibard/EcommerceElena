@@ -1,0 +1,76 @@
+﻿@model IEnumerable<EcommerceElena.Models.Fournisseur>
+
+@{
+    ViewBag.Title = "Liste";
+}
+
+<h2>Liste des fabricants</h2>
+
+<p>
+    @Html.ActionLink("Ajouter un nouveau fabricant", "Create")
+</p>
+<p>
+    @Html.ActionLink("Afficher que les fabricants actifs", "FiltreFourn") |
+    @Html.ActionLink("Afficher tout les fabricants", "Index")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nomFourn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.emailFourn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.telephoneFourn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.paysFourn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.villeFourn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.status)
+        </th>
+
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.nomFourn)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.emailFourn)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.telephoneFourn)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.paysFourn)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.villeFourn)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.status)
+    </td>
+    <td>
+        @Html.ActionLink("Details", "Details", new { id = item.idFourn }) |
+        @Html.ActionLink("Supprimer", "Delete", new { id = item.idFourn }) |
+
+        @if (item.status == "bloque")
+        {
+            @Html.ActionLink("Debloquer", "Bloquer", new { id = item.idFourn })
+        }
+        else
+        { @Html.ActionLink("Bloquer", "Bloquer", new { id = item.idFourn })}
+
+
+    </td>
+</tr>
+}
+
+</table>

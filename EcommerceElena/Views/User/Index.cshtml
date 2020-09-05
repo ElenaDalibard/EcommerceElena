@@ -1,0 +1,89 @@
+﻿@model IEnumerable<EcommerceElena.Models.User>
+
+@{
+    ViewBag.Title = "Clients";
+}
+
+    <style>
+        .centre { text-align: center }
+    </style>
+
+<h2>Liste des clients</h2>
+
+<button class="btn btn-default" type="button" data-toggle="collapse" data-target="#top5">
+    Top 5 clients
+</button>
+<div class="collapse" id="top5">
+    @Html.Action("_BestUsers", "User")
+    <br />
+    <hr />
+    <br />
+</div>
+<br/>
+<table class="table">
+    <tr>
+        <th class="centre">
+            @Html.DisplayNameFor(model => model.nomUser)
+        </th>
+        <th class="centre">
+            @Html.DisplayNameFor(model => model.PrenomUser)
+        </th>
+        <th class="centre">
+            @Html.DisplayNameFor(model => model.emailUser)
+        </th>
+        <th class="centre">
+            @Html.DisplayNameFor(model => model.telephoneUser)
+        </th>
+        <th class="centre">
+            @Html.DisplayNameFor(model => model.paysUser)
+        </th>
+        <th class="centre">
+            @Html.DisplayNameFor(model => model.villeUser)
+        </th>
+        <th class="centre">
+            @Html.DisplayNameFor(model => model.statusUser)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nomUser)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrenomUser)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.emailUser)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.telephoneUser)
+            </td>
+            <td class="centre">
+                @Html.DisplayFor(modelItem => item.paysUser)
+            </td>
+            <td class="centre">
+                @Html.DisplayFor(modelItem => item.villeUser)
+            </td>
+            <td class="centre">
+                @Html.DisplayFor(modelItem => item.statusUser)
+            </td>
+            <td>
+
+                @Html.ActionLink("Details", "Details", new { id = item.idUser }) |
+                @Html.ActionLink("Supprimer", "Delete", new { id = item.idUser }) |
+
+                @if (item.statusUser == "bloque")
+                {
+                    @Html.ActionLink("Debloquer", "Bloque", new { id = item.idUser })
+                }
+                else
+                { @Html.ActionLink("Bloquer", "Bloque", new { id = item.idUser })}
+
+            </td>
+        </tr>
+    }
+
+</table>

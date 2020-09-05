@@ -1,0 +1,82 @@
+﻿@using Microsoft.AspNet.Identity
+@using EcommerceElena.Models
+<style>
+    .barre {background-color:powderblue; font-size:larger}
+    .brand {font-size:22px; font-weight:bold; font-family:'Ink Free'}
+</style>
+
+<div class="navbar navbar-fixed-top barre">
+    <div class="container">
+            <div class="navbar-header navbar-brand brand">
+                Tirelires chez Elena
+            </div>
+        <div>
+            @if (Request.IsAuthenticated)
+            {
+                try
+                {
+                    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                @Html.ActionLink("Bonjour " + ((User)Session["User"]).PrenomUser + " !", "MonCompte", "User", routeValues: null, htmlAttributes: new { title = "Manage" })
+                            </li>
+                            <li><a href="javascript:document.getElementById('logoutForm').submit()">Se déconnecter</a></li>
+                        </ul>
+                    }
+                    <ul class="nav navbar-nav">
+                        @if (((string[])ViewBag.Roles).Contains("Admin"))
+                        {
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    Gestion
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">@Html.ActionLink("Produits", "Index", "Produit")</a></li>
+                                    <li><a href="#">@Html.ActionLink("Commandes", "Lister", "Commande")</a></li>
+                                    <li><a href="#">@Html.ActionLink("Clients", "Index", "User")</a></li>
+                                    <li><a href="#">@Html.ActionLink("Fabricants", "Index", "Fournisseur")</a></li>
+                                    <li><a href="#">@Html.ActionLink("Categories", "Index", "Category")</a></li>
+                                </ul>
+                            </li>
+                        }
+                        @if (((string[])ViewBag.Roles).Contains("Moderateur"))
+                        {
+                            <li>@Html.ActionLink("Gestion d'avis", "Index", "Avi")</li>
+                        }
+                        @if (((string[])ViewBag.Roles).Contains("Assistant"))
+                        {
+                            <li>@Html.ActionLink("Gestion des commandes", "Lister", "Commande")</li>
+                        }
+                        <li>@Html.ActionLink("Galerie", "Gallery", "Produit")</li>
+                        <li>@Html.ActionLink("Mes commandes", "MesCommandes", "User")</li>
+                        <li>@Html.ActionLink("Mon Panier", "Index", "Panier")</li>
+                    </ul>
+                }
+                catch
+                {
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>@Html.ActionLink("S'inscrire", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                        <li>@Html.ActionLink("Se connecter", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+                    </ul>
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Galerie", "Gallery", "Produit")</li>
+                    </ul>
+                }
+            }
+            else
+            {
+                <ul class="nav navbar-nav navbar-right">
+                    <li>@Html.ActionLink("S'inscrire", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                    <li>@Html.ActionLink("Se connecter", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Galerie", "Gallery", "Produit")</li>
+                </ul>
+            }
+        </div>
+    </div>
+</div>

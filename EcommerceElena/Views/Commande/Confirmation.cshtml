@@ -1,0 +1,101 @@
+﻿@model EcommerceElena.Models.Commande
+
+@{
+    ViewBag.Title = "Confirmation";
+}
+    <style>
+        .prix {
+            font-weight: bold
+        }
+        .title {
+        font-family:'Ink Free';
+        font-size: 40px;
+    }
+    </style>
+
+    <body>
+        <h2 class="title">Confirmation</h2>
+
+        <div>
+            <h4>Votre commande</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.User.nomUser)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.User.nomUser)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.User.PrenomUser)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.User.PrenomUser)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.User.adresseUser)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.User.adresseUser)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.User.villeUser)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.User.villeUser)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.User.paysUser)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.User.paysUser)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.User.codePostal)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.User.codePostal)
+                </dd>
+            </dl>
+            <br />
+        </div>
+        <div>
+            <table>
+                <tr class="text-center">
+                    <th class="col-md-3 text-center">Produit</th>
+                    <th class="col-md-1 text-center">Prix</th>
+                    <th class="col-md-2 text-center">Fabricant</th>
+                    <th class="col-md-1 text-center">Quantité</th>
+                    <th class="col-md-1 text-center">Montant</th>
+                </tr>
+                @foreach (var detail in Model.DetailCommandes)
+                {
+            <tr class="text-center">
+                <td class="col-md-3">
+                    <span><image src="@Url.Content("~/Images/" + detail.idProd + "_" + detail.Produit.imageUrl)" width="30" )"></image></span>
+                    <span>@detail.Produit.nomProd</span>
+                </td>
+                <td class="col-md-1">@detail.Produit.PrixProd €</td>
+                <td class="col-md-2">@detail.Produit.Fournisseur.nomFourn</td>
+                <td class="col-md-1">@detail.quantite</td>
+                <td class="col-md-1">@(detail.Produit.PrixProd * detail.quantite) €</td>
+            </tr>
+                }
+            </table>
+        </div>
+        <hr />
+        <div class="text-right prix">Montant de la commande : @ViewBag.Total €</div>
+
+        <p>
+            <input type="button" class="btn-success btn-lg" value="Valider cette commande" onclick="location.href='@Url.Action("Validation", "Commande")'" />
+        </p>
+        <hr />
+        <br />
+        @Html.ActionLink("Retour à la Galerie", "Gallery")
+    </body>
