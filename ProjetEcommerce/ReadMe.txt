@@ -16,6 +16,7 @@ Fonctionnamités :
 * Regarder les details d'une commande (user)
 * Ajouter un produit dans le catalogue (admin)
 * Modifier un produit (admin)
+* 2 langues à choisir
 
 Frameworks :
 Asp .Net Core
@@ -23,6 +24,8 @@ Entity
 AspNetCore.Authorization
 AspNetCore.Authentication
 AspNetCore.Session
+
+Utilisation des services
 
 ---------------------------
 Base de données : Produits_Entity.mdf
