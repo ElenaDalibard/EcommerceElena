@@ -1,0 +1,66 @@
+﻿@model Produit
+@inject IDisplayer displayerService
+@using System.Security.Claims;
+@using Microsoft.AspNetCore.Http;
+@inject IHttpContextAccessor accessor
+
+@{
+    ViewData["Title"] = "DetailProduit";
+}
+@if (Model == null)
+{
+    <div class="row alert-danger">
+        Erreur...
+    </div>
+}
+else
+{
+    <h2>@Model.Titre</h2>
+    <div class="row">
+        <div class="col">
+            @foreach (Image i in Model.Images)
+            {
+                <img src=@displayerService.ReWriteImageUrl(i.Url) width="200" />
+            }
+        </div>
+        <div class="col">
+            <h4>
+                @Model.Prix €
+            </h4>
+            <div class="row">
+                @Model.Description
+            </div>
+            @if (Model.Quantity == 0)
+            {
+                <div class="alert-danger">
+                    Stock épuisé !
+                </div>
+            }
+            else
+            {
+                <div class="row">
+                    Il reste @Model.Quantity examplaires.
+                </div>
+            }
+            <hr />
+            <form asp-controller="Panier" asp-route-id="@Model.Id" asp-action="AddProduit">
+                <div class="row">
+                    Quantité :
+                    <input class="m-1" type="number" name="qty" value=1 width="20" />
+                </div>
+                <div class="col">
+                    <div class="row">
+                        <button type="submit" class="btn btn-success m-1">Ajouter au panier</button>
+                        <a asp-controller="Produit" asp-action="Acceuil" class="btn btn-primary m-1">Continuer les achats</a>
+                    </div>
+                    @if (accessor.HttpContext.User.HasClaim(c => c.Type == ClaimTypes.Email) && accessor.HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role).Value == "admin")
+                    {
+                        <div class="row">
+                            <a asp-controller="Produit" asp-route-id="@Model.Id" asp-action="AddProduit" class="btn btn-info m-1">Modifier</a>
+                        </div>
+                    }
+                </div>
+            </form>
+        </div>
+    </div>
+}

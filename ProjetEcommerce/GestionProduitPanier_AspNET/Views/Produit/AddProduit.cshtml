@@ -1,0 +1,54 @@
+﻿@inject ITranslate translateService
+@model Produit
+@{
+    ViewData["Title"] = @translateService.Translate("Ajouter un produit");
+}
+
+<h2>Ajouter un produit</h2>
+
+<form enctype="multipart/form-data" method="post" asp-controller="Produit" asp-action="SubmitProduit">
+    <input type="hidden" class="col form-control" name="Id" value=@Model.Id />
+    <div class="row m-1">
+        @translateService.Translate("Titre")
+    </div>
+    <div class="row m-1">
+        <input type="text" class="col form-control" placeholder="@translateService.Translate("Titre")" name="Titre" value=@Model.Titre />
+    </div>
+    <div class="row m-1">Description</div>
+    <div class="row m-1">
+        <textarea type="text" class="col form-control" placeholder="Description" name="Description">@Model.Description</textarea>
+    </div>
+    <div class="row m-1">
+        <div class="col-2">
+            <div class="row m-1">@translateService.Translate("Prix")</div>
+            <input type="text" class="col form-control" placeholder="@translateService.Translate("Prix")" name="Prix" value=@Model.Prix />
+        </div>
+        <div class="col-2">
+            <div class="row m-1">@translateService.Translate("Quantité")</div>
+            <div class="row m-1">
+                <input type="number" class="col form-control" placeholder="@translateService.Translate("Quantité")" name="Quantity" value=@Model.Quantity />
+            </div>
+        </div>
+        <div class="col">
+            <div class="row m-1">@translateService.Translate("Les images de produit")</div>
+            <div class="row m-1">
+                <input multiple type="file" class="col form-control" placeholder="Images" name="images" />
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="col btn btn-success m-2">@translateService.Translate("Enregistrer")</button>
+</form>
+@if (Model.Images.Count > 0)
+{
+    @foreach (Image i in Model.Images)
+    {
+        <div class="row m-1">
+            <form method="post" asp-controller="Produit" asp-action="DeleteImage">
+                <img src=@i.Url name="Url" width="100" />
+                <input type="hidden" class="col form-control" name="id_Image" value=@i.Id />
+                <button type="submit" class="btn btn-dark">Supprimer</button>
+            </form>
+        </div>
+    }
+}
+

@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Insription";
+}
+<h2>Nouveau Utilisateur - Creer Compte</h2>
+<form enctype="multipart/form-data" method="post" asp-controller="Utilisateur" asp-action="SubmitSignIn">
+    <div class="row m-1">
+        Votre Nom
+    </div>
+    <div class="row m-1">
+        <input type="text" class="col form-control" placeholder="Nom" name="Nom" />
+    </div>
+    <div class="row m-1">
+        Votre Prénom
+    </div>
+    <div class="row m-1">
+        <input type="text" class="col form-control" placeholder="Prenom" name="Prenom" />
+    </div>
+    <div class="row m-1">
+        Votre Email
+    </div>
+    <div class="row m-1">
+        <input type="text" class="col form-control" placeholder="Email" name="Email" />
+    </div>
+    <div class="row m-1">
+        Votre mot de passe
+    </div>
+    <div class="row m-1">
+        <input type="password" class="col form-control" placeholder="Password" name="Password" />
+    </div>
+    <button type="submit" class="col btn btn-success m-2 w-auto">Enregistrer</button>
+</form>
+

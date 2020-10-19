@@ -1,0 +1,45 @@
+﻿@model List<Commande>
+@inject ITranslate translateService
+@{
+    ViewData["Title"] = @translateService.Translate("Toutes les commandes");
+}
+
+<h3>@translateService.Translate("Toutes les commandes")</h3>
+@if (Model.Count > 0)
+{
+    <div style="background-color:lightblue">
+        <table class="table table-bordered border-dark">
+            <thead>
+                <tr>
+                    <th scope="col">@translateService.Translate("Numéro")</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">@translateService.Translate("Nom et prènom de client")</th>
+                    <th scope="col">@translateService.Translate("Email de client")</th>
+                    <th scope="col">@translateService.Translate("Prix total")</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Commande p in Model)
+                {
+                    <tr>
+                        <td>@p.Id</td>
+                        <td>@p.Date.ToString("dd/MM/yyyy")</td>
+                        <td>@p.Utilisateur.Nom @p.Utilisateur.Prenom</td>
+                        <td>@p.Utilisateur.Email</td>
+                        <td>@p.Total</td>
+                        <td>
+                            <div class="col font-weight-bold">
+                                <a asp-controller="Commande" asp-route-id="@p.Id" asp-action="DetailCommande">Details</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <div>Pas encore des commandes...</div>
+}

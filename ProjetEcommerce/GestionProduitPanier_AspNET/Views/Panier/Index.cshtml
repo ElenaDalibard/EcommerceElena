@@ -1,0 +1,55 @@
+﻿@model Panier
+@inject IDisplayer displayerService
+@{
+    ViewData["Title"] = "Panier";
+}
+
+<h3>Votre Panier</h3>
+@if (ViewBag.Message != null)
+{
+    <div class="alert-info m-2">@ViewBag.Message</div>
+}
+else
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">Produit</th>
+                <th scope="col">Quantité</th>
+                <th scope="col">Prix par unité</th>
+                <th scope="col">Prix total</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (ProduitPanier p in Model.ListeProduits)
+            {
+                <tr>
+                    <td>
+                        <img src="@displayerService.ReWriteImageUrl(@p.Produit.Images[0].Url)" width="50" />
+                    </td>
+                    <td>@p.Produit.Titre</td>
+                    <td>@p.Quantity</td>
+                    <td>@p.Produit.Prix</td>
+                    <td>@(p.Produit.Prix * p.Quantity)</td>
+                    <td>
+                        <form asp-controller="Panier" asp-route-id="@p.Produit.Id" asp-action="DeleteProduit">
+                            <input hidden="hidden" name="qty" value="@p.Quantity" />
+                            <button type="submit" class="btn btn-danger">Supprimer</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div class="row">
+        <div class="col-offset-5 font-weight-bold">
+            Total : @Model.Total() €
+        </div>
+    </div>
+    <a asp-controller="Produit" asp-action="Acceuil" class="btn btn-primary m-1">Continuer les achats</a>
+    <a asp-controller="Commande" asp-action="PasserCommande" class="btn btn-success m-1">Passer la commande</a>
+}
+
+

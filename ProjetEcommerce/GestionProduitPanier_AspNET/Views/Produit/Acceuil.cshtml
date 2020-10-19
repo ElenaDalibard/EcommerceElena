@@ -1,0 +1,54 @@
+﻿@model ProduitsViewModel
+@inject IDisplayer displayerService
+@inject ITranslate translateService
+@{
+    ViewData["Title"] = @translateService.Translate("Acceuil");
+}
+
+<h2>@translateService.Translate("Nos produits")</h2>
+<article class="container container-fluid">
+    <form class="form-inline" asp-controller="Produit" asp-action="Acceuil">
+        <input class="form-control mr-sm-2" type="search" placeholder="@translateService.Translate("Recherche un produit")" name="titre" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">@translateService.Translate("Rechercher")</button>
+    </form>
+    @if (Model.produits.Count == 0)
+    {
+        <div class="alert-danger m-2 p-2">Rien pour le moment.</div>
+    }
+    else
+    {
+        @foreach (Produit p in Model.produits)
+        {
+            <div class="d-inline-block inl border border-dark text-center m-3 p-4" style="width:220px; background-color:rgba(255, 255, 255, 0.5)">
+                    <h5>@p.Titre</h5>
+                    <div class="row justify-content-center">
+                        @if (p.Images.Count() > 0)
+                        {
+                            <div style="height:180px">
+                                <img src="@displayerService.ReWriteImageUrl(p.Images[0].Url)" width="180" style="max-height:180px" />
+                            </div>
+                        }
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            @p.Prix €
+                        </div>
+                    </div>
+                    @if (p.Quantity == 0)
+                    {
+                        <div class="alert-danger row">
+                            <div class="col">
+                                Stock épuisé !
+                            </div>
+                        </div>
+                    }
+                    <div class="row">
+                        <div class="col font-weight-bold">
+                            <a asp-controller="Produit" asp-route-id="@p.Id" asp-action="DetailProduit">Details</a>
+                        </div>
+                    </div>
+            </div>
+        }
+    }
+    <div></div>
+</article>

@@ -1,0 +1,51 @@
+﻿@model Commande
+@inject IDisplayer displayerService
+@inject ITranslate translateService
+@{
+    ViewData["Title"] = @translateService.Translate("Commande");
+}
+
+    <h3>
+        @translateService.Translate("Commande") @translateService.Translate("numéro") @Model.Id</h3>
+        <div class="font-italic font-weight-bold">@Model.Date.ToString("dd/MM/yyyy")</div>
+
+        <div style="width:300px; height:150px; background-color:lightblue" class="p-2 m-2 border border-dark">
+            <b>Client :</b>
+            <hr />
+            <b>@translateService.Translate("Nom et prénom") : </b>@Model.Utilisateur.Nom @Model.Utilisateur.Prenom<br />
+            <b>Email : </b>@Model.Utilisateur.Email
+        </div>
+
+        <div style="background-color:lightblue" class="p-3 m-2 border border-dark">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col">@translateService.Translate("Produit")</th>
+                        <th scope="col">@translateService.Translate("Quantité")</th>
+                        <th scope="col">@translateService.Translate("Prix par unité")</th>
+                        <th scope="col">@translateService.Translate("Prix total")</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (ProduitCommande p in Model.ListeProduitsCom)
+                    {
+                        <tr>
+                            <td>
+                                <img src="@displayerService.ReWriteImageUrl(@p.Produit.Images[0].Url)" width="50" />
+                            </td>
+                            <td>@p.Produit.Titre</td>
+                            <td>@p.Quantity</td>
+                            <td>@p.Produit.Prix</td>
+                            <td>@(p.Produit.Prix * p.Quantity)</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <div class="row">
+                <div class="font-weight-bold m-2">
+                    Total : @Model.Total €
+                </div>
+            </div>
+        </div>
+

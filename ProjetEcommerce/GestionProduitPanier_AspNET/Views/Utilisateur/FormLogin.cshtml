@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Login";
+}
+@if(ViewBag.LoginMessage != null)
+{
+    <div class="alert-danger font-italic m-2 p-2">@ViewBag.LoginMessage</div>
+}
+
+<h2>Login</h2>
+
+<form enctype="multipart/form-data" method="post" asp-controller="Utilisateur" asp-action="SubmitLogin">
+    <div class="row m-1">
+        Votre Email
+    </div>
+    <div class="row m-1">
+        <input type="text" class="col form-control" placeholder="Email" name="Email" />
+    </div>
+    <div class="row m-1">
+        Votre Mot de passe
+    </div>
+    <div class="row m-1">
+        <input type="password" class="col form-control" placeholder="Password" name="Password" />
+    </div>
+    <button type="submit" class="col btn btn-success m-2 w-auto">Valider</button>
+</form>
