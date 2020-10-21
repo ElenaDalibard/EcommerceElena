@@ -1,0 +1,72 @@
+﻿@model EcommerceElena.Outils.BestListe
+
+    <style>
+        .centre {
+            text-align: center
+        }
+    </style>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Top 5</title>
+</head>
+<body>
+
+    <h3>Top 5 clients</h3>
+
+    <table class="table">
+        <tr>
+            <th class="centre">
+                Nom
+            </th>
+            <th class="centre">
+                Prénom
+            </th>
+            <th class="centre">
+                Email
+            </th>
+            <th class="centre">
+                Téléhone
+            </th>
+            <th class="centre">
+                Pays
+            </th>
+            <th class="centre">
+                Ville
+            </th>
+            <th class="centre">
+                Montant d'achâts
+            </th>
+        </tr>
+
+        @for (int i = 0; i < 5; i++)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(m => m.ListUsers[i].nomuser)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => m.ListUsers[i].prenomuser)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => m.ListUsers[i].emailuser)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => m.ListUsers[i].telephone)
+                </td>
+                <td class="centre">
+                    @Html.DisplayFor(m => m.ListUsers[i].paysuser)
+                </td>
+                <td class="centre">
+                    @Html.DisplayFor(m => m.ListUsers[i].villeuser)
+                </td>
+                <td class="centre">
+                    @Html.DisplayFor(m => m.ListUsers[i].prixtotal) €
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = Model.ListUsers[i].iduser })
+                </td>
+            </tr>
+        }
+    </table>
+</body>

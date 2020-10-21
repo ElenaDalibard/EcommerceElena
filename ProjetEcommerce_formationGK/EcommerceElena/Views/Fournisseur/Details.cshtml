@@ -1,0 +1,91 @@
+﻿@model EcommerceElena.Models.Fournisseur
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>@Html.DisplayFor(model => model.nomFourn)</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.emailFourn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.emailFourn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.telephoneFourn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.telephoneFourn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.paysFourn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.paysFourn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.villeFourn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.villeFourn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.adresseFourn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.adresseFourn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.codePostal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.codePostal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.descriptionFourn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.descriptionFourn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Modifier", "Edit", new { id = Model.idFourn }) |
+    @Html.ActionLink("Supprimer", "Delete", new { id = Model.idFourn }) |
+
+    @if (Model.status == "bloque")
+    {
+        @Html.ActionLink("Debloquer", "Bloquer", new { id = Model.idFourn })
+    }
+    else
+    { @Html.ActionLink("Bloquer", "Bloquer", new { id = Model.idFourn })} |
+
+@Html.ActionLink("Retourner à la liste", "Index")
+</p>
