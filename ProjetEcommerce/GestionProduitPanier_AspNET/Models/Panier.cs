@@ -53,7 +53,6 @@ namespace GestionProduitPanier_AspNET.Models
         public bool DeleteProduit(int id)
         {
             ProduitPanier produitPanier = ListeProduits.FirstOrDefault(p => p.Produit.Id == id);
-            //ListeProduits.RemoveAll(m => m.Produit.Id == id);
             if(produitPanier !=null)
             {
                 ListeProduits.Remove(produitPanier);

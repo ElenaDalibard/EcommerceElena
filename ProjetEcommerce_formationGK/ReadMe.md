@@ -27,3 +27,7 @@ Asp .Net Core
 Entity
 Routing
 AspNet.Identity
+
+
+### vue de la page d'Acceuil
+![](/gif/index.jpg)

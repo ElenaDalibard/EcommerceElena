@@ -47,10 +47,6 @@ namespace GestionProduitPanier_AspNET.Controllers
         public IActionResult DetailProduit(int id)
         {
             Produit produit = Produit.GetProduitById(id);
-            if(HttpContext.Session.GetInt32("StockQty") != null)
-            {
-                produit.Quantity = (int)HttpContext.Session.GetInt32("StockQty");
-            }
             return View(produit);
         }
 
@@ -78,6 +74,8 @@ namespace GestionProduitPanier_AspNET.Controllers
             {
                 if (produit.Id != 0)
                 {
+                    Produit p = Produit.GetProduitById(produit.Id);
+                    produit.Images = p.Images;
                     produit.Update();
                 }
                 else
@@ -102,10 +100,20 @@ namespace GestionProduitPanier_AspNET.Controllers
         }
 
         [HttpGet]
+        [Authorize(Policy = "ConnectAdmin")]
         public IActionResult EditProduit(int id)
         {
             Produit p = Produit.GetProduitById(id);
             return RedirectToAction("AddProduit", new { id = p.Id});
+        }
+
+        [HttpGet]
+        [Authorize(Policy = "ConnectAdmin")]
+        public IActionResult DeleteProduit(int id)
+        {
+            Produit p = Produit.GetProduitById(id);
+            p.Delete();
+            return RedirectToAction("Acceuil");
         }
 
         [HttpPost]

@@ -89,8 +89,13 @@ namespace GestionProduitPanier_AspNET.Models
                     }
                 }
             }
-            //produit = DataContext.Instance.Produits.Include(a => a.Images).Where(a => a.Images.FirstOrDefault(i=>i.Id==id_image));
             return produit;
+        }
+
+        public void Delete()
+        {
+            DataContext.Instance.Produits.Remove(this);
+            DataContext.Instance.SaveChanges();
         }
 
 

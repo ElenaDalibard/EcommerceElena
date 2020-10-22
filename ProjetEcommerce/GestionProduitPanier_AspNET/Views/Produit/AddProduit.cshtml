@@ -1,5 +1,7 @@
 ﻿@inject ITranslate translateService
 @model Produit
+@inject IDisplayer displayerService
+
 @{
     ViewData["Title"] = @translateService.Translate("Ajouter un produit");
 }
@@ -44,7 +46,7 @@
     {
         <div class="row m-1">
             <form method="post" asp-controller="Produit" asp-action="DeleteImage">
-                <img src=@i.Url name="Url" width="100" />
+                <img src=@displayerService.ReWriteImageUrl(i.Url) name="Url" width="100" />
                 <input type="hidden" class="col form-control" name="id_Image" value=@i.Id />
                 <button type="submit" class="btn btn-dark">Supprimer</button>
             </form>

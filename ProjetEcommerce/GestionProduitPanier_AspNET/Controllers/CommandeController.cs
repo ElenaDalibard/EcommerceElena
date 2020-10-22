@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using GestionProduitPanier_AspNET.Models;
+using GestionProduitPanier_AspNET.Tools;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -35,6 +36,20 @@ namespace GestionProduitPanier_AspNET.Controllers
             Panier panier = JsonConvert.DeserializeObject<Panier>(HttpContext.Session.GetString("Panier"));
             Utilisateur user = Utilisateur.GetUserByEmail(HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email).Value);
             commande.Save(panier, user);
+            foreach(ProduitCommande pc in commande.ListeProduitsCom)
+            {
+                Produit p = Produit.GetProduitById(pc.Produit.Id);
+                if(p.Quantity >= pc.Quantity)
+                {
+                    p.Quantity -= pc.Quantity;
+                }
+                else
+                {
+                    pc.Quantity = p.Quantity;
+                    p.Quantity = 0;
+                }
+                DataContext.Instance.SaveChanges();
+            }
             HttpContext.Session.Clear();
             return RedirectToAction("DetailCommande", commande);
         }

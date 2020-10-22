@@ -39,7 +39,7 @@ namespace GestionProduitPanier_AspNET.Tools
             //optionsBuilder.UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Administrateur\Documents\Elena\FullStackCoursElena\DotNet\coursDotNet\Entity.mdf;Integrated Security=True;Connect Timeout=30");
 
             //Dans la maison
-            optionsBuilder.UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\Programming\_GIT\EcommerceElena\ProjetEcommerce_m2i\Produits_Entity.mdf;Integrated Security=True;Connect Timeout=30");
+            optionsBuilder.UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\acer\Desktop\Code\Examples_MVC\ProjetEcommerce\Produits_Entity.mdf;Integrated Security=True;Connect Timeout=30");
         }
     }
 }

@@ -42,9 +42,6 @@ namespace GestionProduitPanier_AspNET.Controllers
             Produit produit = Produit.GetProduitById(id);
             if (qty<=produit.Quantity && qty !=0)
             {
-                produit.Quantity -= qty;
-                HttpContext.Session.SetInt32("StockQty", produit.Quantity);
-                //produit.Update();
                 panier.AddProduit(produit, qty);
                 HttpContext.Session.SetString("Panier", JsonConvert.SerializeObject(panier));
                 return RedirectToAction("Index", panier);
@@ -56,19 +53,12 @@ namespace GestionProduitPanier_AspNET.Controllers
         }
         
         [HttpPost]
-        public IActionResult DeleteProduit(int id, [FromForm]int qty)
+        public IActionResult DeleteProduit(int id)
         {
             Panier panier = JsonConvert.DeserializeObject<Panier>(HttpContext.Session.GetString("Panier"));
             Produit produit = Produit.GetProduitById(id);
             panier.ListeProduits.RemoveAll(m => m.Produit.Id == produit.Id);
-            produit.Quantity = (int)HttpContext.Session.GetInt32("StockQty");
-            if(panier.DeleteProduit(id))
-            {
-                produit.Quantity += qty;
-                HttpContext.Session.SetInt32("StockQty", produit.Quantity);
-                //produit.Update();
-                HttpContext.Session.SetString("Panier", JsonConvert.SerializeObject(panier));
-            }
+            HttpContext.Session.SetString("Panier", JsonConvert.SerializeObject(panier));
             return RedirectToAction("Index");
         }
     }
