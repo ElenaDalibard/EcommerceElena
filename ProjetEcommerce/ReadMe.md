@@ -51,6 +51,7 @@ Utilisation des microservices
 - Regarder toutes les commandes
 - Ajouter un produit dans le catalogue
 - Modifier un produit
+- Supprimer une des images de produit
 - Supprimer un produit
 
 ![](/ProjetEcommerce/gif/show_admin.gif)
