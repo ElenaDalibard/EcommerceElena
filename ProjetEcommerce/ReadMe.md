@@ -1,8 +1,12 @@
+# Ecommerce
+
 Projet MVC (ASP .net Core), C#
 
---- Ecommerce ---
+## Pour lancer
+Base de données : Produits_Entity.mdf
+Lancer la solution : Ecommerce/Ecommerce.sln
 
-Fonctionnamités :
+## Fonctionnamités
 * S'autoriser comme :
 	- nouveau client
 	- client existant
@@ -18,15 +22,11 @@ Fonctionnamités :
 * Modifier un produit (admin)
 * 2 langues à choisir
 
-Frameworks :
+## Frameworks
 Asp .Net Core
 Entity
 AspNetCore.Authorization
 AspNetCore.Authentication
 AspNetCore.Session
 
-Utilisation des services
-
----------------------------
-Base de données : Produits_Entity.mdf
-Lancer la solution : Ecommerce/Ecommerce.sln
+Utilisation des microservices

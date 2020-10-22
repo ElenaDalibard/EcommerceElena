@@ -1,10 +1,9 @@
-Projet final de la formation "Developpement .Net" à Global Knowledge, Lille
+# Site de magasin de tirelires
 
---- Site de magasin de tirelires ---
-
+Projet final de la formation "Developpement .Net" à Global Knowledge
 Type : MVC (C#)
 
-Fonctionnamités :
+## Fonctionnamités
 * S'autoriser comme :
 	- nouveau client
 	- client existant
@@ -23,3 +22,8 @@ Fonctionnamités :
 * Sur la page de Galerie on voit également top 5 produits vendu
 * Sur la page avec les details de produit on voit top 5 et aussi les produits de même couleur
 
+## Frameworks
+Asp .Net Core
+Entity
+Routing
+AspNet.Identity

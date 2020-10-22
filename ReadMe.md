@@ -1,11 +1,11 @@
-Projets MVC en C#
+# Projets MVC en C#
 
------ ProjetEcommerce -----
+## ProjetEcommerce
 Projet pendant la formation à M2i
 
-Frameworks :
+### Frameworks
 Asp .Net Core
-Entity
+Entity 3.8.1
 AspNetCore.Authorization
 AspNetCore.Authentication
 AspNetCore.Session
@@ -14,11 +14,11 @@ Utilisation des services
 
 
 
------ ProjetEcommerce_formationGK -----
+## ProjetEcommerce_formationGK
 
-Projet final de la formation "Developpement .Net" à Global Knowledge, Lille
+Projet final de la formation "Developpement .Net" à Global Knowledge
 
-Frameworks :
+### Frameworks
 Asp .Net Core
 Entity
 Routing

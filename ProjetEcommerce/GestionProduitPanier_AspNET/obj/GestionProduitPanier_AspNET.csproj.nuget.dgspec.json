@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Programming\\_GIT\\EcommerceElena\\ProjetEcommerce_m2i\\GestionProduitPanier_AspNET\\GestionProduitPanier_AspNET.csproj": {}
+    "C:\\Users\\acer\\Desktop\\Code\\Examples_MVC\\ProjetEcommerce\\GestionProduitPanier_AspNET\\GestionProduitPanier_AspNET.csproj": {}
   },
   "projects": {
-    "D:\\Programming\\_GIT\\EcommerceElena\\ProjetEcommerce_m2i\\GestionProduitPanier_AspNET\\GestionProduitPanier_AspNET.csproj": {
+    "C:\\Users\\acer\\Desktop\\Code\\Examples_MVC\\ProjetEcommerce\\GestionProduitPanier_AspNET\\GestionProduitPanier_AspNET.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Programming\\_GIT\\EcommerceElena\\ProjetEcommerce_m2i\\GestionProduitPanier_AspNET\\GestionProduitPanier_AspNET.csproj",
+        "projectUniqueName": "C:\\Users\\acer\\Desktop\\Code\\Examples_MVC\\ProjetEcommerce\\GestionProduitPanier_AspNET\\GestionProduitPanier_AspNET.csproj",
         "projectName": "GestionProduitPanier_AspNET",
-        "projectPath": "D:\\Programming\\_GIT\\EcommerceElena\\ProjetEcommerce_m2i\\GestionProduitPanier_AspNET\\GestionProduitPanier_AspNET.csproj",
+        "projectPath": "C:\\Users\\acer\\Desktop\\Code\\Examples_MVC\\ProjetEcommerce\\GestionProduitPanier_AspNET\\GestionProduitPanier_AspNET.csproj",
         "packagesPath": "C:\\Users\\acer\\.nuget\\packages\\",
-        "outputPath": "D:\\Programming\\_GIT\\EcommerceElena\\ProjetEcommerce_m2i\\GestionProduitPanier_AspNET\\obj\\",
+        "outputPath": "C:\\Users\\acer\\Desktop\\Code\\Examples_MVC\\ProjetEcommerce\\GestionProduitPanier_AspNET\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\acer\\AppData\\Roaming\\NuGet\\NuGet.Config",
