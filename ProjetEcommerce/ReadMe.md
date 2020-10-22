@@ -37,17 +37,20 @@ Utilisation des microservices
 - Ajouter au panier la quantité souhaité
 - Supprimer le produit de panier
 - Recherche par les lettre de titre de produit
-![](/gif/show.gif)
+
+![](/ProjetEcommerce/gif/show.gif)
 
 ### Mode User
 - Passer la commande
 - Regarder ses commandes
 - Regarder les details d'une commande
-![](/gif/show_user.gif)
+
+![](/ProjetEcommerce/gif/show_user.gif)
 
 ### Mode Admin
 - Regarder toutes les commandes
 - Ajouter un produit dans le catalogue
 - Modifier un produit
 - Supprimer un produit
-![](/gif/show_admin.gif)
+
+![](/ProjetEcommerce/gif/show_admin.gif)
