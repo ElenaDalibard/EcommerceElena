@@ -12,7 +12,7 @@ AspNetCore.Session
 
 Utilisation des services
 
-### vue de la page d'Acceuil
+### Vue de la page d'Acceuil
 (les videos sont dans le README dans le dossier de projet)
 ![](/ProjetEcommerce/gif/index.jpg)
 
@@ -27,5 +27,5 @@ Entity
 Routing
 AspNet.Identity
 
-### vue de la page d'Acceuil
+### Vue de la page d'Acceuil
 ![](/ProjetEcommerce_formationGK/gif/index.jpg)
