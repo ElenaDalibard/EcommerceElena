@@ -29,7 +29,7 @@ namespace GestionProduitPanier_AspNET.Tools
             }
         }
 
-        public DataContext() : base()
+        private DataContext() : base()
         {
 
         }

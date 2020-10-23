@@ -5,7 +5,7 @@ Projet pendant la formation à M2i
 
 ### Frameworks
 Asp .Net Core
-Entity 3.8.1
+Entity 3.1.8
 AspNetCore.Authorization
 AspNetCore.Authentication
 AspNetCore.Session

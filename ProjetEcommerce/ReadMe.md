@@ -24,7 +24,7 @@ Lancer la solution : Ecommerce/Ecommerce.sln
 
 ## Frameworks
 Asp .Net Core
-Entity
+Entity 3.1.8
 AspNetCore.Authorization
 AspNetCore.Authentication
 AspNetCore.Session
