@@ -7,9 +7,9 @@ Type : MVC (C#)
 * S'autoriser comme :
 	- nouveau client
 	- client existant
-	- administrateur (admin@admin.com)
-	- moderateur (moderateur@moder.com)
-	- assistant (assistant@assist.com)
+	- administrateur
+	- moderateur
+	- assistant
 * Lister les produits
 * Regarder les details de produit
 * Ajouter au panier
@@ -28,6 +28,7 @@ Entity
 Routing
 AspNet.Identity
 
+ORM : Table First
 
 ### vue de la page d'Acceuil
 ![](/gif/index.jpg)
