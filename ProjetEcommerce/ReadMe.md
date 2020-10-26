@@ -50,6 +50,8 @@ ORM : Model First
 ![](/ProjetEcommerce/gif/show_user.gif)
 
 ### Mode Admin
+Login : admin@admin.fr
+Mot de passe : admin
 - Regarder toutes les commandes
 - Ajouter un produit dans le catalogue
 - Modifier un produit
