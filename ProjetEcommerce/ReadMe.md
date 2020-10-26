@@ -29,7 +29,9 @@ AspNetCore.Authorization
 AspNetCore.Authentication
 AspNetCore.Session
 
-Utilisation des microservices
+Utilisation des services
+
+ORM : Model First
 
 ### Sans authentication
 - Lister les produits
